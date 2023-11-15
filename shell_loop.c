@@ -9,17 +9,17 @@
  */
 int hsh(info_t *info, char **av)
 {
-	ssize_t r = 0;
+	ssize_t x = 0;
 	int builtin_ret = 0;
 
-	while (r != -1 && builtin_ret != -2)
+	while (x != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
-		r = get_input(info);
-		if (r != -1)
+		x = get_input(info);
+		if (x != -1)
 		{
 			set_info(info, av);
 			builtin_ret = find_builtin(info);
@@ -54,7 +54,7 @@ int hsh(info_t *info, char **av)
  */
 int find_builtin(info_t *info)
 {
-	int i, built_in_ret = -1;
+	int y, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -67,11 +67,11 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+	for (y = 0; builtintbl[y].type; y++)
+		if (_strcmp(info->argv[0], builtintbl[y].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[i].func(info);
+			built_in_ret = builtintbl[y].func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -86,7 +86,7 @@ int find_builtin(info_t *info)
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int i, k;
+	int y, a;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -94,10 +94,10 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_delim(info->arg[i], " \t\n"))
-			k++;
-	if (!k)
+	for (y = 0, a = 0; info->arg[y]; y++)
+		if (!is_delim(info->arg[y], " \t\n"))
+			a++;
+	if (!a)
 		return;
 
 	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
