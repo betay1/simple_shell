@@ -67,7 +67,7 @@ ssize_t get_input(info_t *info)
 
 	check_chain(info, buf, &j, i, len);
 	while (j < len)
-	{	
+	{
 		if (is_chain(info, buf, &j))
 		break;
 		j++;

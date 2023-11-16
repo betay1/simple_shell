@@ -18,10 +18,10 @@ int interactive(info_t *info)
  * Return: 1 if true, 0 if false
  */
 
-int is_delim(char x, char *delim)
+int is_delim(char c, char *delim)
 {
 	while (*delim)
-		if (*delim++ == x)
+		if (*delim++ == c)
 		return (1);
 	return (0);
 }
@@ -32,9 +32,9 @@ int is_delim(char x, char *delim)
  *Return: 1 if i is alphabetic, 0 otherwise
  */
 
-int _isalpha(int x)
+int _isalpha(int c)
 {
-	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && x <= 'Z'))
 		return (1);
 	else
 		return (0);
