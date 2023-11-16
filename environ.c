@@ -22,13 +22,13 @@ int _myenv(info_t *info)
 char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
-	char *y;
+	char *p;
 
 	while (node)
 	{
-		y = starts_with(node->str, name);
-		if (y && *y)
-			return (y);
+		p = starts_with(node->str, name);
+		if (p && *p)
+			return (p);
 		node = node->next;
 	}
 	return (NULL);
