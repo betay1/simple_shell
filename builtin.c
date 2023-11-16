@@ -37,11 +37,11 @@ int _myexit(info_t *info)
 
 int _mycd(info_t *info)
 {
-	char *i, *dir, buffer[1024];
+	char *s, *dir, buffer[1024];
 	int chdir_ret;
 
-	i = getcwd(buffer, 1024);
-	if (!i)
+	s = getcwd(buffer, 1024);
+	if (!s)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
